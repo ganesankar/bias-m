@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import {
@@ -35,17 +35,17 @@ import PrivateRoute from "./components/PrivateRoute";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import rootReducer from "./store/reducers";
 
-import { config } from "./services/config";
-
+//import { config } from "./services/config";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import "./index.css";
+// import "./index.css";
 import "./app.css";
 
 const Root = () => {
   //
   const initialState = {};
-  const [appConfig, setApConfig] = useState(null);
+  // const [appConfig, setApConfig] = useState(null);
   const [appConLoad, setApConLoad] = useState(false);
   let url = "https://revit08.netlify.app/" || "http://localhost:3002/"; // should look something like "https://foo.netlify.com"
   const currentURL = String(window.location.href);
@@ -89,7 +89,7 @@ const Root = () => {
       <Provider store={store}>
         <ScrollToTop />
         {!appConLoad && <MySpinner key={0} text={"Loading..."} />}
-        <AuthStatusView appConfig={appConfig} />
+        <AuthStatusView />
         <div className="pageContainer">
           <Switch>
             <Route path="/" exact component={Home} />
@@ -113,14 +113,14 @@ const Root = () => {
             <Redirect to="/error" />
           </Switch>
         </div>
-        <Footer nav={menuAll} appConfig={appConfig} />
+        <Footer nav={menuAll} />
         <MyToast />
       </Provider>
     </Router>
   );
 };
 
-function AuthStatusView(appConfig) {
+function AuthStatusView() {
   const identity = {};
   const [dialog, setDialog] = React.useState(false);
   const name =
@@ -142,7 +142,7 @@ function AuthStatusView(appConfig) {
         avatar_url={avatar_url}
         name={name}
         setDialog={setDialog}
-        appConfig={appConfig}
+        dialog={dialog}
       />
     </div>
   );

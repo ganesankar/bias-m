@@ -1,20 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Container,
-  Row,
-  Col,
-  NavLink,
-} from "reactstrap";
+import { NavLink } from "reactstrap";
 const Footer = ({ nav }) => {
-  const { navMenu, footer } = nav;
+  const { footer } = nav;
 
   return (
     <>
@@ -28,7 +16,7 @@ const Footer = ({ nav }) => {
               <div className="mb-5">
                 <h3 className="footer-heading mb-4 text-primary">Bias-M</h3>
                 <p className="text-gray-700 mb-2">
-                  Built with ♥️ in Chennai <br />
+                Build <br />
                   2020 &copy; Ganesan Karuppaiya
                 </p>
               </div>
@@ -47,7 +35,7 @@ const Footer = ({ nav }) => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> 
             ))}
           </div>
         </div>

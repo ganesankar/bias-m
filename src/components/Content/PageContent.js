@@ -1,18 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { getImgPlaceHolder } from './../../utils';
+import React from "react";
+import { connect } from "react-redux";
 
-import TimeLine from '../Common/TimeLine';
+import TimeLine from "../Common/TimeLine";
 const PageContent = ({ data }) => {
-  const { basic, created, modified, pic, content } = data;
+  const { basic, pic, content } = data;
   console.log(data);
 
-  let title = '';
-  let desc = '';
-  let pici = '';
+  let desc = "";
+  let pici = "";
   if (basic && basic.length > 0) {
-    title = basic.find((x) => x.field === 'title').val || '';
-    desc = basic.find((x) => x.field === 'desC').val || '';
+    desc = basic.find((x) => x.field === "desC").val || "";
   }
   if (pic && pic.length > 0) {
     pici = pic[0].base64;
@@ -36,7 +33,7 @@ const PageContent = ({ data }) => {
               {desc && (
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: desc.replace(/\n/g, '<br />'),
+                    __html: desc.replace(/\n/g, "<br />"),
                   }}
                 />
               )}
@@ -45,7 +42,7 @@ const PageContent = ({ data }) => {
                 content.map((item, i) => (
                   <div>
                     <h5>{item.title}</h5>
-                    {item.type === 'timeline' && (
+                    {item.type === "timeline" && (
                       <TimeLine data={item.data}></TimeLine>
                     )}
                   </div>

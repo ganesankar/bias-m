@@ -3,20 +3,21 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import Nav from 'react-bootstrap/Nav';
 import { LinkContainer } from 'react-router-bootstrap';
-import { getImgPlaceHolder, get50Char } from './../../utils';
+// import { getImgPlaceHolder, get50Char } from './../../utils';
+import {  get50Char } from './../../utils';
 
 const ArticleCard = ({ data, id, ts }) => {
-  const { basic, created, modified, pic } = data;
+  const { basic, created, pic } = data;
   let title = '';
   let desc = '';
-  let pici = '';
+  //let pici = '';
   if (basic && basic.length > 0) {
     title = basic.find((x) => x.field === 'title').val || '';
     desc = basic.find((x) => x.field === 'desC').val || '';
-    pici = getImgPlaceHolder(title);
+   // pici = getImgPlaceHolder(title);
   }
   if (pic && pic.length > 0) {
-    pici = pic[0].base64;
+    //pici = pic[0].base64;
   }
   return (
     <>

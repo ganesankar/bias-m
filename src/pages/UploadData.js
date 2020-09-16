@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-import { OutTable, ExcelRenderer } from "react-excel-renderer";
+import {  ExcelRenderer } from "react-excel-renderer";
 
 import { AgGridColumn, AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
@@ -12,13 +12,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 
 import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardLink,
-  CardTitle,
-  CardSubtitle,
+  
   Container,
   Row,
   Col,
@@ -26,7 +20,6 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   TabContent,
   TabPane,
   Nav,
@@ -36,7 +29,6 @@ import {
 } from "reactstrap";
 import PageTitle from "../components/PageTitle/PageTitle";
 import UserCard from "../components/UserCard/UserCard";
-import UserDetail from "../components/UserCard/UserDetail";
 
 import MySpinner from "../components/MySpinner";
 
@@ -50,15 +42,13 @@ const UploadData = ({
   setPageToLoad,
 }) => {
   // did mount
-  const [dataLoaded, setDataLoaded] = useState(false);
+  // const [dataLoaded, setDataLoaded] = useState(false);
   const [modal, setModal] = useState(false);
   const [activeTab, setActiveTab] = useState("1");
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [rowData, setRowData] = useState([]);
   const [UserModelView, UserModelToggle] = useState(false);
   const [excelUploadData, setExcelUploadData] = useState(null);
-  const userViewBackData = JSON.parse(JSON.stringify(excelUploadData));
 
   const toggle = () => setModal(!modal);
   const toggleTab = (x) => setActiveTab(x);
@@ -81,29 +71,7 @@ const UploadData = ({
     setExcelUploadData(user);
     UserModelToggle(true);
   };
-  const updateUserView = (data) => {
-    excelUploadData.data = data;
-    setExcelUploadData(excelUploadData);
-  };
-
-  const onInputChange = (group, field, value) => {
-    console.log(`${group} ${field} ${value}`);
-    var ind = excelUploadData.data[group].findIndex((x) => x.field === field);
-    if (ind >= 0) {
-      excelUploadData.data[group][ind].val = value;
-    }
-    setExcelUploadData({});
-    setTimeout(function () {
-      setExcelUploadData(excelUploadData);
-    });
-  };
-  const cancelEdit = () => {
-    console.log("excelUploadData", userViewBackData);
-    setExcelUploadData({});
-    setTimeout(function () {
-      setExcelUploadData(userViewBackData);
-    });
-  };
+  
   const onGridReady = (params) => {
     setGridApi(params.api);
     setGridColumnApi(params.columnApi);
@@ -111,7 +79,7 @@ const UploadData = ({
 
   const fileHandler = (event) => {
     let fileObj = event.target.files[0];
-    let note = { status: false, message: "Upload Failed" };
+    //let note = { status: false, message: "Upload Failed" };
     const gridCols = [];
     const gridRows = [];
     //just pass the fileObj as parameter

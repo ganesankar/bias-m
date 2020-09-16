@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router";
-import { LinkContainer } from "react-router-bootstrap";
 import { connect } from "react-redux";
 
 import {
@@ -21,7 +20,6 @@ import {
   getLocalUser,
   logoutLocalUser,
 } from "../../store/actions/auth";
-import { config } from "../../services/config";
 const Header = ({
   nav,
   location,
@@ -34,7 +32,7 @@ const Header = ({
   auth,
   setDialog,
 }) => {
-  const { pathname } = location;
+  // const { pathname } = location;
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -43,12 +41,6 @@ const Header = ({
     getGoogleUser();
     getLocalUser();
   }, []);
-
-  function getCurrentUser() {
-    let user = null;
-    user = auth.googleUser ? "google" : auth.localUser ? "local" : null;
-    return user;
-  }
 
   const { navMenu } = nav;
   return (

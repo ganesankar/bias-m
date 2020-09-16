@@ -1,31 +1,17 @@
 import React, { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import moment from "moment";
 
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-  Container,
-  Row,
-  Col,
-  NavLink,
-} from "reactstrap";
+import { Card, CardText, CardBody, Row, Col, NavLink } from "reactstrap";
 
-import ArticleCard from "../../components/Content/ArticleCard";
-import MySpinner from "../../components/MySpinner";
+import MySpinner from "./../components/MySpinner";
 
-import { loadArticles } from "../../store/actions/articles";
-import { setPageToLoad } from "../../store/actions/header";
+import { loadArticles } from "./../store/actions/articles";
+import { setPageToLoad } from "./../store/actions/header";
 
-import { menuAll } from "../../constants/Menu";
+import { menuAll } from "./../constants/Menu";
 const Home = ({
-  articles: { isLoading, articles, hasMoreItems, error },
+  articles: { isLoading, articles, error },
   loadArticles,
   header,
   setPageToLoad,
@@ -48,15 +34,6 @@ const Home = ({
   console.log("articles", articles);
   const today = new Date();
   const lastWd = "2004-06-02";
-  //... units can be [seconds, minutes, hours, days, weeks, months, year
-  const years = moment().diff(lastWd, "years", false);
-  const months = moment().diff(lastWd, "months", false);
-  const endOfMonth = moment(lastWd, "YYYY-MM-DD").endOf("month");
-  const days = moment().diff(lastWd, "days", false);
-  const daysd = moment().diff(endOfMonth, "days", false);
-  const starttoday = moment(today, "YYYY-MM-DD").startOf("month");
-  const thismonthdiff = moment().diff(starttoday, "days", false);
-  const dayos = days - daysd + thismonthdiff;
 
   return (
     <Fragment>
@@ -87,13 +64,12 @@ const Home = ({
                 >
                   Getting Started
                 </NavLink>
-              
               </div>
             </div>
           </div>
         </div>
       </section>
-     
+
       <section className="py-8 py-md-11 border-bottom">
         <div className="container">
           <div className="row">
@@ -106,8 +82,8 @@ const Home = ({
               <h3>Built for developers</h3>
 
               <p className="text-muted mb-6 mb-md-0">
-              Bias-M is built to make its configuring easier with reusable components.
-              Open to modify to any stack and 
+                Bias-M is built to make its configuring easier with reusable
+                components. Open to modify to any stack and
               </p>
             </div>
             <div
@@ -120,8 +96,8 @@ const Home = ({
               <h3>Designed to be modern</h3>
 
               <p className="text-muted mb-6 mb-md-0">
-                Bias-M  feels
-                modern, minimal, beautiful yet powerful for user driven format
+                Bias-M feels modern, minimal, beautiful yet powerful for user
+                driven format
               </p>
             </div>
             <div
@@ -134,7 +110,8 @@ const Home = ({
               <h3>Open Source</h3>
 
               <p className="text-muted mb-0">
-              Meet the easy, open source way for everyone in your company to ask questions and learn from data.
+                Meet the easy, open source way for everyone in your company to
+                ask questions and learn from data.
               </p>
             </div>
           </div>
@@ -160,16 +137,16 @@ const Home = ({
 
           <Row>
             {menuAll.homeMenu.map((menu, i) => (
-              <Col sm="12" md="6" lg="3" className="mb-7" >
+              <Col sm="12" md="6" lg="3" className="mb-7">
                 <Card className="card shadow-light-lg mb-6 mb-md-0 lift lift-lg">
                   <CardBody>
-                  <CardText className="text-muted">{menu.desc}</CardText>
-                  <NavLink
-                    href={menu.link}
-                    className={`font-size-sm font-weight-bold text-decoration-none`}
-                  >
-                    {menu.title}
-                  </NavLink>
+                    <CardText className="text-muted">{menu.desc}</CardText>
+                    <NavLink
+                      href={menu.link}
+                      className={`font-size-sm font-weight-bold text-decoration-none`}
+                    >
+                      {menu.title}
+                    </NavLink>
                   </CardBody>
                 </Card>
               </Col>
