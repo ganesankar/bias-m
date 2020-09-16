@@ -1,5 +1,4 @@
 import React from "react";
-import Spinner from "react-bootstrap/Spinner";
 
 import "./styles.css";
 
@@ -18,7 +17,7 @@ const MySpinner = ({ text, ...rest }) => {
         <div></div>
         <div></div>
         <div></div>
-        <div></div>
+        <div></div> 
       </div>
     </div>
   );

@@ -21,19 +21,13 @@ const Home = ({
     loadArticles();
   }, []);
 
-  function getId(todo) {
-    if (!todo.ref) {
-      return null;
-    }
-    return todo.ref["@ref"].id;
-  }
+
 
   console.log(articles);
   if (error) return <Redirect to={"/error"} />;
   if (isLoading) return <MySpinner key={0} text={"Loading..."} />;
   console.log("articles", articles);
-  const today = new Date();
-  const lastWd = "2004-06-02";
+
 
   return (
     <Fragment>

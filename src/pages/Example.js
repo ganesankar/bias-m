@@ -5,32 +5,23 @@ import { Redirect } from "react-router-dom";
 
 import MySpinner from "../components/MySpinner";
 
-import {
-  Card,
-  CardBody,
-  Col,
-  NavLink,
-} from "reactstrap";
+import { Card, CardBody, Col, NavLink } from "reactstrap";
 
 import { loadPage } from "../store/actions/pageDetails";
 import { showToast, hideToast } from "../store/actions/toast";
 
 import { sampleDash } from "./../constants/sampleDashboard";
-const Example = ({
-  pageDetails,
-  match,
-}) => {
-  const { page, isLoading, error } = pageDetails;
-
+const Example = ({ pageDetails, match }) => {
+  const { isLoading, error } = pageDetails;
+/*
   useEffect(() => {
     console.log("component updated", match.params.id);
     // loadPage(match.params.id);
   }, [match.params.id]);
-
+*/
   if (error) return <Redirect to={"/error"} />;
   if (isLoading) return <MySpinner key={0} text={"Loading..."} />;
 
-  const data = pageDetails.page ? pageDetails.page.data : {};
   return (
     <Fragment>
       <section class="pt-8 pt-md-11 bg-gradient-light">
@@ -44,7 +35,9 @@ const Example = ({
               <h1>See Dashboard in action</h1>
 
               <p class="font-size-lg text-gray-700 mb-7 mb-md-9">
-              Explore our gallery of sample data reports and dashboards. See something you like? To get started, simply make a copy and connect your data.
+                Explore our gallery of sample data reports and dashboards. See
+                something you like? To get started, simply make a copy and
+                connect your data.
               </p>
             </div>
           </div>
@@ -63,7 +56,7 @@ const Example = ({
                       <p class="text-muted">{f.desc}</p>
 
                       <NavLink
-                        href={`/dashboard/sample/${j+1}`}
+                        href={`/dashboard/sample/${j + 1}`}
                         className={`font-weight-bold text-decoration-none`}
                       >
                         View <i class="fe fe-arrow-right ml-3"></i>

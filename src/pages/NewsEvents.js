@@ -20,10 +20,11 @@ const NewsEvents = ({
   setPageToLoad,
 }) => {
   // did mount
+  /*
   useEffect(() => {
     loadArticles();
   }, []);
-
+*/
   function getId(todo) {
     if (!todo.ref) {
       return null;

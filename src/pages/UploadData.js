@@ -28,7 +28,6 @@ import {
   Alert,
 } from "reactstrap";
 import PageTitle from "../components/PageTitle/PageTitle";
-import UserCard from "../components/UserCard/UserCard";
 
 import MySpinner from "../components/MySpinner";
 
@@ -45,9 +44,8 @@ const UploadData = ({
   // const [dataLoaded, setDataLoaded] = useState(false);
   const [modal, setModal] = useState(false);
   const [activeTab, setActiveTab] = useState("1");
-  const [gridApi, setGridApi] = useState(null);
-  const [gridColumnApi, setGridColumnApi] = useState(null);
-  const [UserModelView, UserModelToggle] = useState(false);
+  //const [gridApi, setGridApi] = useState(null);
+  //const [gridColumnApi, setGridColumnApi] = useState(null);
   const [excelUploadData, setExcelUploadData] = useState(null);
 
   const toggle = () => setModal(!modal);
@@ -66,15 +64,10 @@ const UploadData = ({
       }
     }
   }, []);
-  const openUserView = (user) => {
-    console.log("g", user);
-    setExcelUploadData(user);
-    UserModelToggle(true);
-  };
   
   const onGridReady = (params) => {
-    setGridApi(params.api);
-    setGridColumnApi(params.columnApi);
+   // setGridApi(params.api);
+   // setGridColumnApi(params.columnApi);
   };
 
   const fileHandler = (event) => {
@@ -219,14 +212,7 @@ const UploadData = ({
 
       <Container fluid>
         <Row className="mb-1">
-          {students &&
-            students.map((user, i) => (
-              <UserCard
-                user={user.data}
-                key={i}
-                openUserView={() => openUserView(user)}
-              />
-            ))}
+          
         </Row>
         <Row>
           <Col>
